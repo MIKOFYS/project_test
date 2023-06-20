@@ -1,0 +1,67 @@
+body{
+    background-color: #e5e0e0;
+}
+
+table tbody {
+    display: block;
+    max-height: 645px;
+    min-height: 640px;
+    background-color: #e8d5d5;
+    margin-bottom: 20px;
+}
+
+table thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;/*重要  表格固定算法*/
+    text-align: center;
+
+    border-bottom: 1px solid #807c7c;
+}
+
+table thead {/*留出滚动条的位置*/
+    width: calc(100% - 1em)
+}
+
+table thead th {
+    background: #ccc;
+}
+
+.title{
+    font-weight: 777;
+    font-size: 20px;
+
+    text-align: center;
+    margin: 10px auto;
+}
+
+.btnbox{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+}
+.btn{
+    margin-left: 20px;
+    transform: translateX(-50%);
+
+    cursor: pointer;
+
+}
+
+td{
+    font-size: xx-small;
+}
+
+.md5{
+    font-size: 1px;
+}
+
+#table2 tbody {
+    display: block;
+    max-height: 25px;
+    min-height: 20px;
+    background-color: #e8d5d5;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>paper</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/css/paper.css}">
+    <script th:src="@{/web/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/paper.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+    <table id="table1" v-if="operator=='queryCourse'">
+        <thead>
+            <tr>
+                <th colspan="2">课程信息</th>
+            </tr>
+            <tr>
+                <th v-for="item in courseColName">{{item}}</th>
+            </tr>
+        </thead>
+
+        <tbody class="tbody">
+            <!--<tr v-if="vue.methods.getJSONLen(vue.studentList)==0" th:colspan="4" >nothing</tr>-->
+            <tr v-for="course in courseList">
+                <td>{{course.courseName}}</td>
+                <td><input type="button" value="选择" v-on:click="queryPaper(course.course_id,course.teach_class_id)"/></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table id="table2" v-if="operator=='queryPaper'">
+        <thead>
+            <tr>
+                <th colspan="3">试卷信息</th>
+            </tr>
+            <tr>
+                <th v-for="item in paperColName">{{item}}</th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+            <tr v-for="paper in paperList">
+                <td>{{paper.paper_id}}</td>
+                <td><input type="button" value="下载" v-on:click="downloadPaper(paper.paper_id)"/></td>
+                <td><input type="button" value="上传" v-on:click="uploadPaper(paper.paper_id)"/></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="back" v-on:click="queryCourse()"/></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

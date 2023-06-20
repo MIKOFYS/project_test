@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-model="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>student_course</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/manage/css/student_course.css}">
+    <script th:src="@{/web/manage/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/student_course.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+
+    <div class="title">student_course表</div>
+
+    <table id="table1">
+        <thead>
+        <tr>
+            <th v-for="item in student_courseColName">{{item}}</th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr v-for="student_course in student_courseList">
+            <td>{{student_course.student_id}}</td>
+            <td>{{student_course.course_id}}</td>
+            <td>{{student_course.score}}</td>
+            <td><input type="button" value="删除"
+                       v-on:click="deleteStudent_course(student_course.student_id,student_course.course_id,student_course.score)"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <table id="table2">
+        <tbody class="tbody">
+        <tr>
+            <td><input type="text" id="student_id"/></td>
+            <td><input type="text" id="course_id"/></td>
+            <td><input type="text" id="score"/></td>
+            <td><input type="button" value="添加" v-on:click="checkAddStudent_course()"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <div class="btnbox">
+
+        <button class="btn" type="button" value="上一页" v-on:click="pageNumberSUB">上一页</button>
+
+        <button class="btn" type="button" value="下一页" v-on:click="pageNumberADD">下一页</button>
+
+    </div>
+</div>
+</body>
+</html>

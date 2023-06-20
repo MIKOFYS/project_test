@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-model="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>queryPersonInfo</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/css/queryPersonInfo.css}">
+    <script th:src="@{/web/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/queryPersonInfo.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="DIV">
+    <table id="table1" v-if="operator=='queryStudentPersonInfo'">
+        <thead>
+        <tr>
+            <th>学生信息</th>
+        </tr>
+        </thead>
+        <tbody class="tbody" v-if="studentJSON">
+        <!--<tr v-if="vue.methods.getJSONLen(vue.studentList)==0" th:colspan="4" >nothing</tr>-->
+        <tr >
+            <td>头像</td>
+            <td><img id="studentPicture" v-bind:src="studentPicture"/></td>
+            <td><input id="studentImg" type="file" placeholder="请先上传再点击按钮更新信息"/></td>
+            <td><input type="button" v-on:click="checkStudentPictureValue(studentJSON.student_id)" value="更新"/></td>
+        </tr>
+        <tr >
+            <td>学号</td>
+            <td>{{studentJSON.student_id}}</td>
+        </tr>
+        <tr >
+            <td>班级</td>
+            <td>{{studentJSON.class_id}}</td>
+        </tr>
+        <tr >
+            <td>年级</td>
+            <td>{{studentJSON.grade_id}}</td>
+        </tr>
+        <tr >
+            <td>学院</td>
+            <td>{{studentJSON.dept_name}}</td>
+        </tr>
+        <tr >
+            <td>姓名</td>
+            <td>{{studentJSON.name}}</td>
+        </tr>
+        <tr >
+            <td>性别</td>
+            <td>{{studentJSON.sex}}</td>
+        </tr>
+        <tr >
+            <td>电话</td>
+            <td>{{studentJSON.phone}}</td>
+            <td><input type="text" v-model="phone" placeholder="请先输入电话再点击按钮更新信息"/></td>
+            <td><input type="button" v-on:click="checkStudentPhoneValue(studentJSON.student_id,phone)" value="更新"/></td>
+        </tr>
+        <tr >
+            <td>邮箱</td>
+            <td>{{studentJSON.email}}</td>
+            <td><input type="text" v-model="email" placeholder="请先输入邮箱再点击按钮更新信息"/></td>
+            <td><input type="button" v-on:click="checkStudentEmailValue(studentJSON.student_id,email)" value="更新"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table id="table2" v-if="operator=='queryTeacherPersonInfo'">
+        <thead>
+        <tr>
+            <th>老师信息</th>
+        </tr>
+        </thead>
+        <tbody class="tbody" v-if="teacherJSON">
+        <!--<tr v-if="vue.methods.getJSONLen(vue.studentList)==0" th:colspan="4" >nothing</tr>-->
+        <tr >
+            <td>头像</td>
+            <td><img id="teacherPicture" v-bind:src="teacherPicture"/></td>
+            <td><input id="teacherImg" type="file" placeholder="请先上传再点击按钮更新信息"/></td>
+            <td><input type="button" v-on:click="checkTeacherPictureValue(teacherJSON.teacher_id)" value="更新"/></td>
+        </tr>
+        <tr >
+            <td>老师认证码</td>
+            <td>{{teacherJSON.teacher_id}}</td>
+        </tr>
+        <tr >
+            <td>学院</td>
+            <td>{{teacherJSON.dept_name}}</td>
+        </tr>
+        <tr >
+            <td>姓名</td>
+            <td>{{teacherJSON.name}}</td>
+        </tr>
+        <tr >
+            <td>性别</td>
+            <td>{{teacherJSON.sex}}</td>
+        </tr>
+        <tr >
+            <td>电话</td>
+            <td>{{teacherJSON.phone}}</td>
+            <td><input type="text" v-model="phone" placeholder="请先输入电话再点击按钮更新信息"/></td>
+            <td><input type="button" v-on:click="checkTeacherPhoneValue(teacherJSON.teacher_id,phone)" value="更新"/></td>
+        </tr>
+        <tr >
+            <td>邮箱</td>
+            <td>{{teacherJSON.email}}</td>
+            <td><input type="text" v-model="email" placeholder="请先输入邮箱再点击按钮更新信息"/></td>
+            <td><input type="button" v-on:click="checkTeacherEmailValue(teacherJSON.teacher_id,email)" value="更新"/></td>
+        </tr>
+        </tbody>
+    </table>
+</div >
+</body>
+</html>

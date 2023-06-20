@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>teacherMainPage</title>
+  <link rel="stylesheet" th:href="@{/web/css/teacherMainPage.css}">
+  <script th:src="@{/web/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+  <script th:src="@{/web/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+  <script th:src="@{/web/js/teacherMainPage.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div class="outer">
+  <h1 class="title">老师主页</h1>
+  <div id="DIV">
+    <input class="btn" type="button" value="个人信息" v-on:click="transQueryPersonInfo()"/>
+    <input type="button" class="btn" value="查询页面" v-on:click="transQuery()"/>
+    <input type="button"  class="btn" value="查询课表" v-on:click="transQueryCourse()"/>
+    <input type="button"  class="btn" value="评分" v-on:click="transScore()"/>
+  </div>
+</div>
+</body>
+</html>

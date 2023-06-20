@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-model="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>teach_class</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/manage/css/teach_class.css}">
+    <script th:src="@{/web/manage/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/teach_class.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+
+    <div class="title">teach_class表</div>
+
+    <table id="table1">
+        <thead>
+        <tr>
+            <th v-for="item in teach_classColName">{{item}}</th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr v-for="teach_class in teach_classList">
+            <td>{{teach_class.teach_class_id}}</td>
+            <td>{{teach_class.course_id}}</td>
+            <td>{{teach_class.teacher_id}}</td>
+            <td><input type="button" value="删除"
+                       v-on:click="deleteTeach_class(teach_class.teach_class_id,teach_class.course_id,teach_class.teacher_id)"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <table id="table2">
+        <tbody class="tbody">
+        <tr>
+            <td><input type="text" id="teach_class_id"/></td>
+            <td><input type="text" id="course_id"/></td>
+            <td><input type="text" id="teacher_id"/></td>
+            <td><input type="button" value="添加" v-on:click="checkAddTeach_class()"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <div class="btnbox">
+
+        <button class="btn" type="button" value="上一页" v-on:click="pageNumberSUB">上一页</button>
+
+        <button class="btn" type="button" value="下一页" v-on:click="pageNumberADD">下一页</button>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" th:href="@{/web/css/login.css}">
+    <script th:src="@{/web/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/login.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <div id="midArea">
+        <div id="title">欢迎来到教学服务系统</div>
+        <form id="form" th:action="@{/loginController.do}" method="post">
+            <div  class="account">
+                账号 &nbsp;<input type="text" name="id" placeholder="请输入账号"/>
+
+            </div>
+            <div class="password">
+                密码  &nbsp;<input  type="password" name="password" autocomplete="new-password" placeholder="请输入密码" >
+            </div>
+            <div class="check">
+                身份
+                <input type="radio" name="operateParameter" value="teacherLogin" checked="checked"/>老师
+                <input type="radio" name="operateParameter" value="studentLogin"/>学生
+                <input type="submit" value="登录" >
+            </div>
+        </form>
+        <input type="submit" v-on:click="changePassword()" value="修改密码">
+        <input type="submit" v-on:click="forgetPassword()" value="忘记密码">
+    </div>
+</body>
+</html>

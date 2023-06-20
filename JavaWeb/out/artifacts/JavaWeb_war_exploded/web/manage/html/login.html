@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" th:href="@{/web/manage/css/login.css}">
+    <script th:src="@{/web/manage/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/login.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="midArea">
+    <div id="title">管理员登录界面</div>
+    <form id="form">
+        <div  class="account">
+            账号 &nbsp;<input type="text" id="id" placeholder="请输入账号"/>
+
+        </div>
+        <div class="password">
+            密码  &nbsp;<input  type="password" id="password" autocomplete="new-password" placeholder="请输入密码" >
+        </div>
+    </form>
+    <div >
+        <input type="submit" value="登录" v-on:click="administratorLogin()">
+    </div>
+</div>
+</body>
+</html>

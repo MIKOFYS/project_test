@@ -1,0 +1,45 @@
+
+
+.outer{
+    text-align: center;
+    width: 90vw;
+    height: 90vh;
+    background-color: #c9c9c9;
+    margin: 0px auto;
+}
+h1{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+#DIV{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 200px;
+    margin: 20px auto;
+
+    background-color: #efdfdf;
+}
+
+.btn{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    font-size: 17px;
+    font-weight: 777;
+    height: 50px;
+}
+.btn:hover{
+    background-color: #6969e0;
+    color: white;
+    cursor: pointer;
+
+}

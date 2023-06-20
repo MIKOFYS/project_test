@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-model="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>teach_class_time_room</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/manage/css/teach_class_time_room.css}">
+    <script th:src="@{/web/manage/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/teach_class_time_room.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+
+    <div class="title">teach_class_time_room表</div>
+
+    <table id="table1">
+        <thead>
+        <tr>
+            <th v-for="item in teach_class_time_roomColName">{{item}}</th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr v-for="teach_class_time_room in teach_class_time_roomList">
+            <td>{{teach_class_time_room.teach_class_id}}</td>
+            <td>{{teach_class_time_room.time}}</td>
+            <td>{{teach_class_time_room.room}}</td>
+            <td><input type="button" value="删除"
+                       v-on:click="deleteTeach_class_time_room(teach_class_time_room.teach_class_id,teach_class_time_room.time,teach_class_time_room.room)"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <table id="table2">
+        <tbody class="tbody">
+        <tr>
+            <td><input type="text" id="teach_class_id"/></td>
+            <td><input type="text" id="time"/></td>
+            <td><input type="text" id="room"/></td>
+            <td><input type="button" value="添加" v-on:click="checkAddTeach_class_time_room()"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <div class="btnbox">
+
+        <button class="btn" type="button" value="上一页" v-on:click="pageNumberSUB">上一页</button>
+
+        <button class="btn" type="button" value="下一页" v-on:click="pageNumberADD">下一页</button>
+
+    </div>
+</div>
+</body>
+</html>

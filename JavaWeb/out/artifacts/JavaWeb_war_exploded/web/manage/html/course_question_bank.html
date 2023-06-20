@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-model="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>course_question_bank</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/manage/css/course_question_bank.css}">
+    <script th:src="@{/web/manage/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/course_question_bank.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+
+    <div class="title">course_question_bank表</div>
+
+    <table id="table1">
+        <thead>
+        <tr>
+            <th v-for="item in course_question_bankColName">{{item}}</th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr v-for="course_question_bank in course_question_bankList">
+            <td>{{course_question_bank.course_id}}</td>
+            <td>{{course_question_bank.paper_id}}</td>
+            <td><input type="button" value="删除"
+                       v-on:click="deleteCourse_question_bank(course_question_bank.course_id,course_question_bank.paper_id)"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <table id="table2">
+        <tbody class="tbody">
+        <tr>
+            <td><input type="text" id="course_id"/></td>
+            <td><input type="text" id="paper_id"/></td>
+            <td><input type="button" value="添加" v-on:click="checkAddCourse_question_bank()"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <div class="btnbox">
+
+        <button class="btn" type="button" value="上一页" v-on:click="pageNumberSUB">上一页</button>
+
+        <button class="btn" type="button" value="下一页" v-on:click="pageNumberADD">下一页</button>
+
+    </div>
+</div>
+</body>
+</html>

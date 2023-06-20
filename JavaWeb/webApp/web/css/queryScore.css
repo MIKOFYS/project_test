@@ -1,0 +1,29 @@
+body{
+    background-color: #e9e9ea;
+}
+table {
+    height: 95vh;
+}
+
+table tbody {
+    display: block;
+    height: 80%;
+    overflow-y: scroll;
+}
+
+table thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;/*重要  表格固定算法*/
+    text-align: center;
+    border-bottom: 1px solid #3f3d3d;
+    line-height: 50px;
+}
+
+table thead {/*留出滚动条的位置*/
+    width: calc(100% - 1em)
+}
+
+table thead th {
+    background: #ccc;
+}

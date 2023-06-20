@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>selectCourse</title>
+    <title>query</title>
+    <link rel="stylesheet" th:href="@{/web/css/selectCourse.css}">
+    <script th:src="@{/web/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/selectCourse.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+    <table id="couldBeSelectedCourse">
+        <thead>
+            <tr>
+                <th colspan="5">待选课表</th>
+            </tr>
+            <tr>
+                <th v-for="item in couldBeSelectedCourseColName">{{item}}</th>
+            </tr>
+        </thead>
+
+
+        <tbody class="tbody">
+            <tr v-for="course in couldBeSelectedCourseList">
+                <td>{{course.course_id}}</td>
+                <td>{{course.name}}</td>
+                <td>{{course.credit}}</td>
+                <td>{{course.period}}</td>
+                <td><input type="button" value="选择" v-on:click="selectCourse(course.course_id)"/></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table id="selectedCourse">
+        <thead>
+            <tr>
+                <th colspan="5">已选课表</th>
+            </tr>
+            <tr>
+                <th v-for="item in haveSelectedCourseColName">{{item}}</th>
+            </tr>
+        </thead>
+
+        <tbody class="tbody">
+            <tr v-for="course in haveSelectedCourseList">
+                <td>{{course.course_id}}</td>
+                <td>{{course.name}}</td>
+                <td>{{course.credit}}</td>
+                <td>{{course.period}}</td>
+                <td><input type="button" value="撤销" v-on:click="deleteSelectedCourse(course.course_id)"/></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

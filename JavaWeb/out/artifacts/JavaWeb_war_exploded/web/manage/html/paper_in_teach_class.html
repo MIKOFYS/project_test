@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-model="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>paper_in_teach_class</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/manage/css/paper_in_teach_class.css}">
+    <script th:src="@{/web/manage/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/paper_in_teach_class.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+
+    <div class="title">paper_in_teach_class表</div>
+
+    <table id="table1">
+        <thead>
+        <tr>
+            <th v-for="item in paper_in_teach_classColName">{{item}}</th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr v-for="paper_in_teach_class in paper_in_teach_classList">
+            <td>{{paper_in_teach_class.teach_class_id}}</td>
+            <td>{{paper_in_teach_class.student_id}}</td>
+            <td>{{paper_in_teach_class.paper_id}}</td>
+            <td>{{paper_in_teach_class.score}}</td>
+            <td>{{paper_in_teach_class.directory}}</td>
+            <td>{{paper_in_teach_class.time}}</td>
+            <td><input type="button" value="删除"
+                       v-on:click="deletePaper_in_teach_class(paper_in_teach_class.teach_class_id,paper_in_teach_class.student_id,paper_in_teach_class.paper_id,paper_in_teach_class.score,paper_in_teach_class.directory,paper_in_teach_class.time)"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <table id="table2">
+        <tbody class="tbody">
+        <tr>
+            <td><input type="text" id="teach_class_id1"/></td>
+            <td><input type="text" id="student_id1"/></td>
+            <td><input type="text" id="paper_id1"/></td>
+            <td><input type="text" id="score1"/></td>
+            <td><input type="text" id="directory1"/></td>
+            <td><input type="text" id="time1"/></td>
+            <td><input type="button" value="添加" v-on:click="checkAddPaper_in_teach_class1()"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="teach_class_id2"/></td>
+            <td><input type="text" id="student_id2"/></td>
+            <td><input type="text" id="paper_id2"/></td>
+            <td><input type="text" id="score2"/></td>
+            <td><input type="file" id="directory2"/></td>
+            <td><input type="text" id="time2"/></td>
+            <td><input type="button" value="添加" v-on:click="checkAddPaper_in_teach_class2()"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <div class="btnbox">
+
+        <button class="btn" type="button" value="上一页" v-on:click="pageNumberSUB">上一页</button>
+
+        <button class="btn" type="button" value="下一页" v-on:click="pageNumberADD">下一页</button>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+createAdministrator=CREATE TABLE administrator(id VARCHAR(10) PRIMARY KEY,name VARCHAR(10),sex CHAR(1));
+createStudent=CREATE TABLE student(id VARCHAR(10) PRIMARY KEY,name VARCHAR(10),sex CHAR(1));
+createTeacher=CREATE TABLE teacher(id VARCHAR(10) PRIMARY KEY,name VARCHAR(10),sex CHAR(1));
+createCourse=CREATE TABLE course(id VARCHAR(10) PRIMARY KEY,name VARCHAR(10),credit INT,period INT);
+createClass=CREATE TABLE class(id VARCHAR(10) PRIMARY KEY);
+createGrade="CREATE TABLE grade(id VARCHAR(10) PRIMARY KEY);
+createDept=CREATE TABLE dept(id VARCHAR(10) PRIMARY KEY);
+createMajor=CREATE TABLE major(id VARCHAR(10) PRIMARY KEY);
+createTeachClass="CREATE TABLE teachclass(id VARCHAR(10) PRIMARY KEY);
+
+createStudentClass=CREATE TABLE student_class(student_id VARCHAR(10),class_id VARCHAR(10),PRIMARY KEY(student_id,class_id),FOREIGN KEY(student_id) REFERENCES student(id),FOREIGN KEY(class_id) REFERENCES class(id));
+createClassGrade=CREATE TABLE class_grade(class_id VARCHAR(10),grade_id VARCHAR(10),PRIMARY KEY(class_id,grade_id),FOREIGN KEY(class_id) REFERENCES class(id),FOREIGN KEY(grade_id) REFERENCES grade(id));
+createClassDept=CREATE TABLE class_dept(class_id VARCHAR(10),dept_id VARCHAR(10),PRIMARY KEY(class_id,dept_id),FOREIGN KEY(class_id) REFERENCES class(id),FOREIGN KEY(dept_id) REFERENCES dept(id));
+createDeptMajor=CREATE TABLE dept_major(dept_id VARCHAR(10),major_id VARCHAR(10),PRIMARY KEY(dept_id,major_id),FOREIGN KEY(dept_id) REFERENCES dept(id),FOREIGN KEY(major_id) REFERENCES major(id));
+createStudentCourse=CREATE TABLE student_course(student_id VARCHAR(10),course_id VARCHAR(10),score DOUBLE,PRIMARY KEY(student_id,course_id),FOREIGN KEY(student_id) REFERENCES student(id),FOREIGN KEY(course_id) REFERENCES course(id));
+createTeacherCourse=CREATE TABLE teacher_course(id VARCHAR(10) PRIMARY KEY,teacher_id VARCHAR(10),course_id VARCHAR(10),FOREIGN KEY(teacher_id) REFERENCES teacher(id),FOREIGN KEY(course_id) REFERENCES course(id),FOREIGN KEY(id) REFERENCES teachclass(id));
+createDtudentTeachClass=CREATE TABLE student_teachclass(student_id VARCHAR(10),teachclass_id VARCHAR(10),PRIMARY KEY(student_id,teachclass_id),FOREIGN KEY(student_id) REFERENCES student(id),FOREIGN KEY(teachclass_id) REFERENCES teachclass(id));
+createTeacherTeachClass=CREATE TABLE teacher_teachclass(teacher_id VARCHAR(10),teachclass_id VARCHAR(10),PRIMARY KEY(teacher_id,teachclass_id),FOREIGN KEY(teacher_id) REFERENCES teacher(id),FOREIGN KEY(teachclass_id) REFERENCES teachclass(id));
+createTeachClassTime=CREATE TABLE teachclass_time(teachclass_id VARCHAR(10) PRIMARY KEY,time DATE,FOREIGN KEY(teachclass_id) REFERENCES teachclass(id));
+
+
+private static final String createAdministrator="CREATE TABLE administrator(id VARCHAR(10) PRIMARY KEY,name VARCHAR(10),sex CHAR(1));";
+private static final String createStudent="CREATE TABLE student(id VARCHAR(10) PRIMARY KEY,name VARCHAR(10),sex CHAR(1));";
+private static final String createTeacher="CREATE TABLE teacher(id VARCHAR(10) PRIMARY KEY,name VARCHAR(10),sex CHAR(1));";
+private static final String createCourse="CREATE TABLE course(id VARCHAR(10) PRIMARY KEY,name VARCHAR(10),credit INT,period INT);";
+private static final String createClass="CREATE TABLE class(id VARCHAR(10) PRIMARY KEY);";
+private static final String createGrade="CREATE TABLE grade(id VARCHAR(10) PRIMARY KEY);";
+private static final String createDept="CREATE TABLE dept(id VARCHAR(10) PRIMARY KEY);";
+private static final String createMajor="CREATE TABLE major(id VARCHAR(10) PRIMARY KEY);";
+private static final String createTeachClass="CREATE TABLE teachclass(id VARCHAR(10) PRIMARY KEY);";
+
+private static final String createStudentClass="CREATE TABLE student_class(student_id VARCHAR(10),class_id VARCHAR(10),PRIMARY KEY(student_id,class_id),FOREIGN KEY(student_id) REFERENCES student(id),FOREIGN KEY(class_id) REFERENCES class(id));";
+private static final String createClassGrade="CREATE TABLE class_grade(class_id VARCHAR(10),grade_id VARCHAR(10),PRIMARY KEY(class_id,grade_id),FOREIGN KEY(class_id) REFERENCES class(id),FOREIGN KEY(grade_id) REFERENCES grade(id));";
+private static final String createClassDept="CREATE TABLE class_dept(class_id VARCHAR(10),dept_id VARCHAR(10),PRIMARY KEY(class_id,dept_id),FOREIGN KEY(class_id) REFERENCES class(id),FOREIGN KEY(dept_id) REFERENCES dept(id));";
+private static final String createDeptMajor="CREATE TABLE dept_major(dept_id VARCHAR(10),major_id VARCHAR(10),PRIMARY KEY(dept_id,major_id),FOREIGN KEY(dept_id) REFERENCES dept(id),FOREIGN KEY(major_id) REFERENCES major(id));";
+private static final String createStudentCourse="CREATE TABLE student_course(student_id VARCHAR(10),course_id VARCHAR(10),score DOUBLE,PRIMARY KEY(student_id,course_id),FOREIGN KEY(student_id) REFERENCES student(id),FOREIGN KEY(course_id) REFERENCES course(id));";
+private static final String createTeacherCourse="CREATE TABLE teacher_course(id VARCHAR(10) PRIMARY KEY,teacher_id VARCHAR(10),course_id VARCHAR(10),FOREIGN KEY(teacher_id) REFERENCES teacher(id),FOREIGN KEY(course_id) REFERENCES course(id),FOREIGN KEY(id) REFERENCES teachclass(id));";
+private static final String createDtudentTeachClass="CREATE TABLE student_teachclass(student_id VARCHAR(10),teachclass_id VARCHAR(10),PRIMARY KEY(student_id,teachclass_id),FOREIGN KEY(student_id) REFERENCES student(id),FOREIGN KEY(teachclass_id) REFERENCES teachclass(id));";
+private static final String createTeacherTeachClass="CREATE TABLE teacher_teachclass(teacher_id VARCHAR(10),teachclass_id VARCHAR(10),PRIMARY KEY(teacher_id,teachclass_id),FOREIGN KEY(teacher_id) REFERENCES teacher(id),FOREIGN KEY(teachclass_id) REFERENCES teachclass(id));";
+private static final String createTeachClassTime="CREATE TABLE teachclass_time(teachclass_id VARCHAR(10) PRIMARY KEY,time DATE,FOREIGN KEY(teachclass_id) REFERENCES teachclass(id));";

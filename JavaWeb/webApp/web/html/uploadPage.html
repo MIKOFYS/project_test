@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>uploadPage</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/css/uploadPage.css}">
+    <script th:src="@{/web/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/uploadPage.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<div id="DIV">
+    <div class="container">
+        <thead>
+        <tr>
+            <th>请上传doc,docx,pdf文件</th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr>
+            <td><input type="file" id="directory"/></td>
+            <td><input type="button" value="上传" v-on:click="checkUpload()"/>
+            </td>
+        </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+</html>

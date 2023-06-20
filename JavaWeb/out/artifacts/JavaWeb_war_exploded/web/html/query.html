@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-model="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>query</title>
+  <link rel="shortcut icon" href="#"/>
+  <link rel="stylesheet" th:href="@{/web/css/query.css}">
+  <script th:src="@{/web/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+  <script th:src="@{/web/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+  <script th:src="@{/web/js/query.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+  <div>
+    <input type="button" value="学生查询" v-on:click="queryStudent"/>
+
+    <input type="button" value="老师查询" v-on:click="queryTeacher"/>
+  </div>
+
+  <hr>
+
+  <input v-model:value="keyword" type="text" placeholder="请输入查询关键字" />&nbsp<input type="button" value="查询" v-on:click="query"/>
+
+  <div class="title" v-if="operator=='queryStudent'">学生信息</div>
+
+  <div class="title" v-else>老师信息</div>
+
+  <hr>
+
+  <table id="table1" v-if="operator=='queryStudent'">
+    <thead>
+      <tr>
+        <th v-for="item in studentColName">{{item}}</th>
+      </tr>
+    </thead>
+    <tbody class="tbody">
+    <!--<tr v-if="vue.methods.getJSONLen(vue.studentList)==0" th:colspan="4" >nothing</tr>-->
+      <tr v-for="student in studentList">
+        <td>{{student.name}}</td>
+        <td>{{student.sex}}</td>
+        <td>{{student.student_id}}</td>
+        <td>{{student.class_id}}</td>
+        <td>{{student.grade_id}}</td>
+        <td>{{student.major_name}}</td>
+        <td>{{student.dept_name}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+<table id="table2" v-if="operator=='queryTeacher'">
+  <thead>
+  <tr>
+    <th v-for="item in teacherColName">{{item}}</th>
+  </tr>
+  </thead>
+  <!--<tr v-if="vue.methods.getJSONLen(vue.teacherList)==0" th:colspan="4" >nothing</tr>-->
+  <tbody>
+    <tr v-for="teacher in teacherList">
+      <td>{{teacher.name}}</td>
+      <td>{{teacher.sex}}</td>
+      <td>{{teacher.teacher_id}}</td>
+      <td>{{teacher.dept_name}}</td>
+    </tr>
+
+  </tbody>
+
+</table>
+
+  <div class="btnbox">
+
+    <button class="btn" type="button" value="上一页" v-on:click="pageNumberSUB">上一页</button>
+
+    <button class="btn" type="button" value="下一页" v-on:click="pageNumberADD">下一页</button>
+
+  </div>
+</div >
+</body>
+</html>

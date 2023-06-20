@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>query</title>
+  <link rel="stylesheet" th:href="@{web/css/query.css}">
+  <script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/axios.min.js.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    window.onload=function(){
+      var vue=new vue({
+        "el":"#form",
+        data:{
+          operator:null,
+          id:null,
+          password:null
+        },
+        method:{
+          login:function (){
+            axios({
+              method: "POST",
+              url:"/loginCotroller.do",
+              params:{
+                operator:vue.operator,
+                id:vue.id,
+                password:vue.password
+              }
+            })
+                    .then(function (value) {
+                    })
+                    .catch(function (value){
+
+                    });
+          }
+
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+
+<div>
+  <div class="inLine"><a  th:href="@{/queryController.do}" th:name="operateParameter" th:value="queryStudent">学生查询</a></div>
+  <div class="inLine"><a  th:href="@{/queryController.do}" th:name="operateParameter" th:value="queryTeacher">老师查询</a></div>
+</div>
+
+<input name="keyword" th:method="post" th:action="@{/queryController.do}"/>
+
+<table >
+
+  <th >
+  <td th:if="${#lists.isEmpty(session.columnName)}" th:each="listItem:${session.columnName}" th:value="listItem"></td>
+  </th>
+
+  <tr th:if="${#lists.isEmpty(session.list)}">
+  <td colspan="4">对不起，数据为空</td>
+  </tr>
+
+  <tr th:unless="${#lists.isEmpty(session.list)}" th:each="listItem:${session.list}">
+    <td th:text="${listItem.id}">ID</td>
+    <td th:text="${listItem.name}">姓名</td>
+    <td th:text="${listItem.class_id}">性别</td>
+  </tr>
+</table>
+
+<input th:name="pageNumber" th:value="${session.pageNumber}">
+<input th:name="pageNumber" th:value="${session.pageNumber}">
+
+</body>
+</html>

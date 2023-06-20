@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans>
+    <!--loginController组件的依赖关系-->
+    <bean id="studentDAO" class="MySSM.DAO.studentDAO"/>
+    <bean id="teacherDAO" class="MySSM.DAO.teacherDAO"/>
+
+    <bean id="loginService" class="MySSM.Service.loginService">
+        <property name="StudentDAO" ref="studentDAO"/>
+        <property name="TeacherDAO" ref="teacherDAO"/>
+    </bean>
+
+    <bean id="loginController" class="MySSM.Controller.loginController">
+        <!--property是属性的意思,标签名可随意,name表示该组件中的属性名,ref表示该组件中属性对应组件的id值-->
+        <property name="LoginService" ref="loginService"/>
+    </bean>
+
+
+    <!--queryController组件的依赖关系-->
+    <bean id="class_realityDAO" class="MySSM.DAO.class_realityDAO"/>
+    <bean id="course_question_bankDAO" class="MySSM.DAO.course_question_bankDAO"/>
+    <bean id="courseDAO" class="MySSM.DAO.courseDAO"/>
+    <bean id="deptDAO" class="MySSM.DAO.deptDAO"/>
+    <bean id="gradeDAO" class="MySSM.DAO.gradeDAO"/>
+    <bean id="majorDAO" class="MySSM.DAO.majorDAO"/>
+    <bean id="paper_bankDAO" class="MySSM.DAO.paper_bankDAO"/>
+    <bean id="paper_in_teach_classDAO" class="MySSM.DAO.paper_in_teach_classDAO"/>
+    <bean id="student_courseDAO" class="MySSM.DAO.student_courseDAO"/>
+    <bean id="student_have_taken_courseDAO" class="MySSM.DAO.student_have_taken_courseDAO"/>
+    <bean id="student_selected_courseDAO" class="MySSM.DAO.student_selected_courseDAO"/>
+    <bean id="student_teach_classDAO" class="MySSM.DAO.student_teach_classDAO"/>
+    <bean id="studentDAO" class="MySSM.DAO.studentDAO"/>
+    <bean id="teach_class_timeDAO" class="MySSM.DAO.teach_class_timeDAO"/>
+    <bean id="teach_classDAO" class="MySSM.DAO.teach_classDAO"/>
+    <bean id="teacherDAO" class="MySSM.DAO.teacherDAO"/>
+
+    <bean id="queryService" class="MySSM.Service.queryService">
+        <property name="Class_realityDAO" ref="class_realityDAO"/>
+        <property name="Course_question_bankDAO" ref="course_question_bankDAO"/>
+        <property name="CourseDAO" ref="courseDAO"/>
+        <property name="DeptDAO" ref="deptDAO"/>
+        <property name="GradeDAO" ref="gradeDAO"/>
+        <property name="MajorDAO" ref="majorDAO"/>
+        <property name="Paper_bankDAO" ref="paper_bankDAO"/>
+        <property name="Paper_in_teach_classDAO" ref="paper_in_teach_classDAO"/>
+        <property name="Student_courseDAO" ref="student_courseDAO"/>
+        <property name="Student_have_taken_courseDAO" ref="student_have_taken_courseDAO"/>
+        <property name="Student_selected_courseDAO" ref="student_selected_courseDAO"/>
+        <property name="Student_teach_classDAO" ref="student_teach_classDAO"/>
+        <property name="StudentDAO" ref="studentDAO"/>
+        <property name="Teach_class_timeDAO" ref="teach_class_timeDAO"/>
+        <property name="Teach_classDAO" ref="teach_classDAO"/>
+        <property name="TeacherDAO" ref="teacherDAO"/>
+    </bean>
+
+    <bean id="queryController" class="MySSM.Controller.queryController">
+        <property name="QueryService" ref="queryService"/>
+    </bean>
+
+    <!--selectCourseController组件的依赖关系-->
+    <bean id="courseDAO" class="MySSM.DAO.courseDAO"/>
+    <bean id="student_selected_courseDAO" class="MySSM.DAO.student_selected_courseDAO"/>
+    <bean id="student_have_taken_courseDAO" class="MySSM.DAO.student_have_taken_courseDAO"/>
+
+    <bean id="selectCourseService" class="MySSM.Service.selectCourseService">
+        <property name="CourseDAO" ref="courseDAO"/>
+        <property name="Student_selected_courseDAO" ref="student_selected_courseDAO"/>
+        <property name="Student_have_taken_courseDAO" ref="student_have_taken_courseDAO"/>
+    </bean>
+
+    <bean id="selectCourseController" class="MySSM.Controller.selectCourseController">
+        <!--property是属性的意思,标签名可随意,name表示该组件中的属性名,ref表示该组件中属性对应组件的id值-->
+        <property name="SelectCourseService" ref="selectCourseService"/>
+    </bean>
+
+    <!--paperController组件的依赖关系--> <!--注意空格-->
+    <bean id="fileUploadAndDownloadService" class="MySSM.Service.fileUploadAndDownloadService"/>
+    <bean id="student_teach_classDAO" class="MySSM.DAO.student_teach_classDAO"/>
+    <bean id="teach_classDAO" class="MySSM.DAO.teach_classDAO"/>
+    <bean id="course_question_bankDAO" class="MySSM.DAO.course_question_bankDAO"/>
+    <bean id="courseDAO" class="MySSM.DAO.courseDAO"/>
+    <bean id="paper_in_teach_classDAO" class="MySSM.DAO.paper_in_teach_classDAO"/>
+
+    <bean id="paperService" class="MySSM.Service.paperService">
+        <property name="FileUploadAndDownloadService" ref="fileUploadAndDownloadService"/>
+        <property name="Student_teach_classDAO" ref="student_teach_classDAO"/>
+        <property name="Teach_classDAO" ref="teach_classDAO"/>
+        <property name="Course_question_bankDAO" ref="course_question_bankDAO"/>
+        <property name="CourseDAO" ref="courseDAO"/>
+        <property name="Paper_in_teach_classDAO" ref="paper_in_teach_classDAO"/>
+    </bean>
+
+    <bean id="paperController" class="MySSM.Controller.paperController">
+        <!--property是属性的意思,标签名可随意,name表示该组件中的属性名,ref表示该组件中属性对应组件的id值-->
+        <property name="PaperService" ref="paperService"/>
+    </bean>
+
+    <!--scoreController组件的依赖关系--> <!--注意空格-->
+    <bean id="studentDAO" class="MySSM.DAO.studentDAO"/>
+    <bean id="teach_classDAO" class="MySSM.DAO.teach_classDAO"/>
+    <bean id="courseDAO" class="MySSM.DAO.courseDAO"/>
+    <bean id="student_courseDAO" class="MySSM.DAO.student_courseDAO"/>
+    <bean id="paper_in_teach_classDAO" class="MySSM.DAO.paper_in_teach_classDAO"/>
+    <bean id="student_teach_classDAO" class="MySSM.DAO.student_teach_classDAO"/>
+    <bean id="fileUploadAndDownloadService" class="MySSM.Service.fileUploadAndDownloadService"/>
+
+    <bean id="scoreService" class="MySSM.Service.scoreService">
+
+        <property name="StudentDAO" ref="studentDAO"/>
+        <property name="Teach_classDAO" ref="teach_classDAO"/>
+        <property name="CourseDAO" ref="courseDAO"/>
+        <property name="Student_courseDAO" ref="student_courseDAO"/>
+        <property name="Paper_in_teach_classDAO" ref="paper_in_teach_classDAO"/>
+        <property name="Student_teach_classDAO" ref="student_teach_classDAO"/>
+        <property name="FileUploadAndDownloadService" ref="fileUploadAndDownloadService"/>
+    </bean>
+
+    <bean id="scoreController" class="MySSM.Controller.scoreController">
+        <!--property是属性的意思,标签名可随意,name表示该组件中的属性名,ref表示该组件中属性对应组件的id值-->
+        <property name="ScoreService" ref="scoreService"/>
+    </bean>
+</beans>

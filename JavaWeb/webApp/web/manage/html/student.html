@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-model="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>student</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/manage/css/student.css}">
+    <script th:src="@{/web/manage/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/student.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+
+    <div class="title">student表</div>
+
+    <table id="table1">
+        <thead>
+        <tr>
+            <th v-for="item in studentColName">{{item}}</th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr v-for="student in studentList">
+            <td>{{student.student_id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.sex}}</td>
+            <td>{{student.phone}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.picture}}</td>
+            <td>{{student.class_id}}</td>
+            <td class="md5"><input type="text" :value="student.password"/></td>
+            <td class="md5"><input type="text" :value="student.hashcode"/></td>
+            <td>{{student.forget_password_flag}}</td>
+            <td><input type="button" value="删除"
+                       v-on:click="deleteStudent(student.student_id,student.name,student.sex,student.phone,student.email,student.picture,student.class_id,student.password,student.hashcode,student.forget_password_flag)"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <table id="table2">
+        <tbody class="tbody">
+        <tr>
+            <td><input type="text" id="student_id1"/></td>
+            <td><input type="text" id="name1"/></td>
+            <td><input type="text" id="sex1"/></td>
+            <td><input type="text" id="phone1"/></td>
+            <td><input type="text" id="email1"/></td>
+            <td><input type="text" id="picture1"/></td>
+            <td><input type="text" id="class_id1"/></td>
+            <td class="md5"><input type="text" id="password1" placeholder="请输入加密值"/></td>
+            <td class="md5"><input type="text" id="hashcode1" placeholder="请输入加密值"/></td>
+            <td><input type="text" id="forget_password_flag1" placeholder="请输入整型值"/></td>
+            <td><input type="button" value="添加" v-on:click="checkAddStudent1()"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="student_id2"/></td>
+            <td><input type="text" id="name2"/></td>
+            <td><input type="text" id="sex2"/></td>
+            <td><input type="text" id="phone2"/></td>
+            <td><input type="text" id="email2"/></td>
+            <td><input type="file" id="picture2" placeholder="png,jpg,gif图片"/></td>
+            <td><input type="text" id="class_id2"/></td>
+            <td class="md5"><input type="text" id="password2" placeholder="请输入未加密值"/></td>
+            <td class="md5"><input type="text" id="hashcode2" placeholder="与学生ID相同"/></td>
+            <td><input type="text" id="forget_password_flag2" placeholder="请输入整型值"/></td>
+            <td><input type="button" value="添加" v-on:click="checkAddStudent2()"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <div class="btnbox">
+
+        <button class="btn" type="button" value="上一页" v-on:click="pageNumberSUB">上一页</button>
+
+        <button class="btn" type="button" value="下一页" v-on:click="pageNumberADD">下一页</button>
+
+    </div>
+</div>
+</body>
+</html>

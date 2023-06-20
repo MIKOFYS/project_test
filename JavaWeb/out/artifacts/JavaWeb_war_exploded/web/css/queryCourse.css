@@ -1,0 +1,21 @@
+td{
+    width: 200px;
+    height: 100px;
+    text-align: center;
+}
+
+table{
+    background-color: #c3eadc;
+    margin: 5px auto;
+}
+
+body{
+    background-color: #d1e8d1;
+}
+.title{
+    font-weight: 777;
+    font-size: 20px;
+
+    text-align: center;
+    margin: 10px auto;
+}

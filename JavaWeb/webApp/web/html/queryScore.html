@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>queryScore</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/css/queryScore.css}">
+    <script th:src="@{/web/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/queryScore.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+    <table>
+        <thead>
+        <tr>
+            <th colspan="5">课程成绩信息</th>
+        </tr>
+        <tr>
+            <th v-for="item in studentCourseScoreInfoColName">{{item}}</th>
+        </tr>
+        </thead>
+
+        <tbody class="tbody">
+        <!--<tr v-if="vue.methods.getJSONLen(vue.studentList)==0" th:colspan="4" >nothing</tr>-->
+        <tr v-for="studentCourseScoreInfo in studentCourseScoreInfoList">
+            <td>{{studentCourseScoreInfo.course_id}}</td>
+            <td>{{studentCourseScoreInfo.course_name}}</td>
+            <td>{{studentCourseScoreInfo.teach_class_id}}</td>
+            <td>{{studentCourseScoreInfo.teacher_name}}</td>
+            <td>{{studentCourseScoreInfo.score}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

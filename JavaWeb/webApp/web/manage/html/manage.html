@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-model="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>manage</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/manage/css/manage.css}">
+    <script th:src="@{/web/manage/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/manage.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+
+    <div class="title">数据库前台界面</div>
+
+    <table id="table">
+        <thead>
+        <tr>
+            <th>数据库表</th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+
+        <tr>
+            <td v-for="item in manageColName1"><input type="button" :value="item" v-on:click="queryManageItem(item)"/>
+            <td/>
+        </tr>
+
+        <tr>
+            <td v-for="item in manageColName2"><input type="button" :value="item" v-on:click="queryManageItem(item)"/>
+            <td/>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

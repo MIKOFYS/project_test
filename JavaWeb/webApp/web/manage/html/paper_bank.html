@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-model="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>paper_bank</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/manage/css/paper_bank.css}">
+    <script th:src="@{/web/manage/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/manage/js/paper_bank.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+
+    <div class="title">paper_bank表</div>
+
+    <table id="table1">
+        <thead>
+        <tr>
+            <th v-for="item in paper_bankColName">{{item}}</th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+        <tr v-for="paper_bank in paper_bankList">
+            <td>{{paper_bank.paper_id}}</td>
+            <td>{{paper_bank.directory}}</td>
+            <td><input type="button" value="删除"
+                       v-on:click="deletePaper_bank(paper_bank.paper_id,paper_bank.directory)"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <table id="table2">
+        <tbody class="tbody">
+        <tr>
+            <td><input type="text" id="paper_id1"/></td>
+            <td><input type="text" id="directory1"/></td>
+            <td><input type="button" value="添加" v-on:click="checkAddPaper_bank1()"/></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="paper_id2"/></td>
+            <td><input type="file" id="directory2" placeholder="docx,doc,pdf文件"/></td>
+            <td><input type="button" value="添加" v-on:click="checkAddPaper_bank2()"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <div class="btnbox">
+
+        <button class="btn" type="button" value="上一页" v-on:click="pageNumberSUB">上一页</button>
+
+        <button class="btn" type="button" value="下一页" v-on:click="pageNumberADD">下一页</button>
+
+    </div>
+</div>
+</body>
+</html>

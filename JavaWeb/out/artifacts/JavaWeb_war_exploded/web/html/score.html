@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>score</title>
+    <link rel="shortcut icon" href="#"/>
+    <link rel="stylesheet" th:href="@{/web/css/score.css}">
+    <script th:src="@{/web/js/vue.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/axios.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/web/js/score.js}" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="form">
+    <table id="teach_class" v-if="operator=='queryTeach_class'">
+        <thead>
+            <tr>
+                <th colspan="4">教学班信息</th>
+            </tr>
+            <tr>
+                <th v-for="item in teach_classColName">{{item}}</th>
+            </tr>
+        </thead>
+
+
+        <tbody class="tbody">
+            <tr v-for="teach_class in teach_classList">
+                <td>{{teach_class.teach_class_id}}</td>
+                <td>{{teach_class.courseName}}</td>
+                <td><input type="button" class="btn" value="检查做题记录" v-on:click="queryPaper_in_teach_class_info(teach_class.teach_class_id)"/></td>
+                <td><input type="button"  class="btn" value="评课程总成绩" v-on:click="queryStudent_course(teach_class.teach_class_id)"/></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <table id="paper" v-if="operator=='queryPaper_in_teach_class_info'">
+
+        <thead>
+            <tr>
+                <th colspan="7">作业提交信息</th>
+            </tr>
+            <tr>
+                <th v-for="item in paper_in_teach_class_infoColName">{{item}}</th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+            <tr v-for="paper_in_teach_class_info in paper_in_teach_class_infoList">
+                <td>{{paper_in_teach_class_info.student_id}}</td>
+                <td>{{paper_in_teach_class_info.student_name}}</td>
+                <td>{{paper_in_teach_class_info.paper_id}}</td>
+                <td>{{paper_in_teach_class_info.score}}</td>
+                <td>{{paper_in_teach_class_info.time}}</td>
+                <td><input type="button" value="下载浏览" v-on:click="downloadPaper(paper_in_teach_class_info.student_id,paper_in_teach_class_info.paper_id)"/></td>
+                <td><input type="button" value="评分" v-on:click="checkPaper(paper_in_teach_class_info.student_id,paper_in_teach_class_info.paper_id)"/></td>
+            </tr>
+            <tr >
+                <td><input type="text" v-model="score" placeholder="请输入分数再点击评分按钮给对应同学打分"/></td>
+            </tr>
+            <tr >
+                <td><input type="button" v-on:click="back()" value="返回"/></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table id="student_course" v-if="operator=='queryStudent_course'">
+
+        <thead>
+            <tr>
+                <th colspan="4">学生课程成绩系统</th>
+            </tr>
+            <tr>
+                <th v-for="item in student_courseColName">{{item}}</th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+            <tr v-for="student_course in student_courseList">
+                <td>{{student_course.student_id}}</td>
+                <td>{{student_course.student_name}}</td>
+                <td>{{student_course.score}}</td>
+                <td><input type="button" value="评课程总成绩" v-on:click="checkStudentCourseScore(student_course.student_id,student_course.course_id)"/></td>
+            </tr>
+            <tr >
+                <td><input type="text" v-model="score" placeholder="请先输入分数再点击评分按钮给对应同学打分"/></td>
+            </tr>
+            <tr >
+                <td><input type="button" v-on:click="back()" value="返回"/></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
